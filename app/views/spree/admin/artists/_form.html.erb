@@ -25,11 +25,17 @@
       <%= form.label :url, Spree::Artist.human_attribute_name(:url) %>:<br />
       <%= form.text_field :url, :class => 'form-control' %>
     <% end %>
-    <%= form.field_container :tax_id, class: ['form-group'] do %>
-      <%= form.label :tax_id, Spree::Artist.human_attribute_name(:tax_id) %>:<br />
-      <%= form.text_field :tax_id, :class => 'form-control' %>
-    <% end %>
+    <%#= form.field_container :tax_id, class: ['form-group'] do %>
+      <%#= form.label :tax_id, Spree::Artist.human_attribute_name(:tax_id) %>:<br />
+      <%#= form.text_field :tax_id, :class => 'form-control' %>
+    <%# end %>
     <% if spree_current_user.admin? %>
+       
+       <%= form.field_container :uin, class: ['form-group'] do %>
+          <%= form.label :uin, Spree::Artist.human_attribute_name(:uin) %>:<br />
+          <%= form.text_field :uin, :class => 'form-control' %>
+       <% end %>
+       
       <%= form.field_container :commission_flat_rate, class: ['form-group'] do %>
         <%= form.label :commission_flat_rate, Spree::Artist.human_attribute_name(:commission_flat_rate) %>:<br />
         <%= form.text_field :commission_flat_rate, :class => 'form-control' %>

@@ -29,6 +29,7 @@ class Spree::Artist < Spree::Base
   validates :email,                  presence: true, email: true, uniqueness: true
   validates :name,                   presence: true, uniqueness: true
   validates :url,                    format: { with: URI::regexp(%w(http https)), allow_blank: true }
+  validates :uin,                    presence: true, uniqueness: true
 
   #==========================================
   # Callbacks
