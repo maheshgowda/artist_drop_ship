@@ -1,0 +1,5 @@
+<!-- insert_bottom "[data-hook='admin_greeting_form_right'], #admin_greeting_form_right[data-hook]" -->
+
+<% if can? :manage, Spree::Artist %>
+  <!-- TODO allow assignment to variants -->
+<% end %>

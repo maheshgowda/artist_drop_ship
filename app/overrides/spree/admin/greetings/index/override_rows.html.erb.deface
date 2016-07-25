@@ -1,0 +1,22 @@
+<!-- replace_contents '[data-hook="admin_greetings_index_rows"]' -->
+
+<%# Changed classes to new like https://github.com/spree/spree/blob/master/backend/app/views/spree/admin/stock_locations/_form.html.erb %>
+<td class="sku"><%= greeting.sku rescue '' %></td>
+<td class="image"><%= mini_image greeting, class: "thumbnail" %></td>
+<td>
+  <% if try_spree_current_user && try_spree_current_user.artist? %>
+    <%= link_to greeting.try(:name), stock_admin_greeting_path(greeting)%>
+  <% else %>
+    <%= link_to greeting.try(:name), edit_admin_greeting_path(greeting) %>
+  <% end %>
+</td>
+<td><%= greeting.display_price.to_html rescue '' %></td>
+<td class="actions" data-hook="admin_greetings_index_row_actions">
+  <% if try_spree_current_user && try_spree_current_user.artist? %>
+    <%= link_to 'SM', stock_admin_greeting_path(greeting), title:'Stock Management', class: 'btn btn-default btn-sm with-tip without-textdecor' if can?(:stock, greeting) && !greeting.deleted? %>
+  <% else %>
+    <%= link_to_edit greeting, :no_text => true, :class => 'edit' if can?(:edit, greeting) && !greeting.deleted? %>
+  <% end %>
+  <%= link_to_clone greeting, :no_text => true, :class => 'clone' if can?(:clone, greeting) %>
+  <%= link_to_delete greeting, :no_text => true if can?(:delete, greeting) && !greeting.deleted? %>
+</td>
