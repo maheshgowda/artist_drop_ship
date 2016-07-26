@@ -8,9 +8,9 @@ class CreateSpreeArtistVariants < ActiveRecord::Migration
       t.timestamps
     end
     
-    Spree::Artist.where.not(artist_id: nil).each do |artist|
-      artist.add_artist! artist.artist_id
+    Spree::Greeting.where.not(artist_id: nil).each do |greeting|
+      greeting.add_artist! greeting.artist_id
     end
-    remove_column :spree_artists, :artist_id
+    remove_column :spree_greetings, :artist_id
   end
 end
